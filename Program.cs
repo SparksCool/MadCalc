@@ -10,8 +10,6 @@ namespace MC
         {
             void MadCalc()
             {
-
-
                 Console.WriteLine("Input data with each number seperated by a comma!");
                 List<string> numbersString = new List<string>();
                 try
@@ -29,22 +27,18 @@ namespace MC
                     MadCalc();
                     return;
                 }
-                
                 List<float> numbers = new List<float>();
                 float Total = 0;
                 foreach (var number in numbersString)
                 {
                     numbers.Add(float.Parse(number));
                     Total += float.Parse(number);
-
-
                 }
                 numbers.Sort();
                 Console.WriteLine("Total is: " + Total);
                 Console.WriteLine("Mean is: " + MathF.Round(Total / numbers.Count, 3));
                 Console.WriteLine("Calculating MAD:");
                 Console.WriteLine();
-
                 float mResult = new float();
                 float mean = MathF.Round(Total / numbers.Count, 3);
                 float smallNum = MathF.Round(numbers[0], 3);
@@ -53,7 +47,6 @@ namespace MC
                 List<float> freqBlacklist = new List<float>();
                 float mode = 0;
                 List<float> modes = new List<float>();
-
                 foreach (var number in numbers)
                 {
                     int freq = 0;
@@ -65,8 +58,6 @@ namespace MC
                             freq += 1;
                         }
                     }
-
-
                     if (data > largeNum)
                     {
                         largeNum = data;
@@ -75,7 +66,6 @@ namespace MC
                     {
                         smallNum = data;
                     }
-
                     if (data > mean)
                     {
                         Console.WriteLine(data + " - " + mean + " = " + MathF.Round((data - mean), 3));
@@ -88,7 +78,6 @@ namespace MC
                         Console.WriteLine();
                         mResult += (mean - data);
                     }
-
                     if (freqBlacklist.Contains(data) == false && freq > 1)
                     {
                         freqOut.Add(Environment.NewLine + data + " has a frequency of: " + freq);
@@ -103,13 +92,9 @@ namespace MC
                             mode = freq;
                             modes.Add(data);
                         }
-
                     }
                     freqBlacklist.Add(data);
-
-
                 }
-
                 Console.WriteLine("Deviation Total is: " + mResult);
                 Console.WriteLine();
                 Console.WriteLine("MAD = " + MathF.Round(mResult / numbers.Count, 3));
@@ -138,30 +123,22 @@ namespace MC
                     else
                     {
                         Console.WriteLine("Median is " + numbers[numbers.Count / 2]);
-
                     }
                     Console.WriteLine(Environment.NewLine + "Sorted Dataset:");
                     foreach (var number in numbers)
                     {
                         Console.Write(" " + number + ",");
-
                     }
                     Console.WriteLine();
-
                     Console.WriteLine("There are " + modes.Count + " Mode(s) in this data set which are:" + Environment.NewLine);
                     foreach (var modeX in modes)
                     {
                         Console.Write(" " + modeX + ",");
                     }
                     Console.WriteLine();
-
                 }
-
-
             }
-
             MadCalc();
-
             Console.WriteLine(Environment.NewLine + "Type Command 'exit' to exit or press any key to reset the program");
             bool KeepRunning = true;
             while (KeepRunning)
